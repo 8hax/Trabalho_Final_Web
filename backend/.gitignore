@@ -1,0 +1,27 @@
+# 1. Dependências do Node
+node_modules/
+
+# 2. Variáveis de Ambiente
+.env
+.env.*.local
+
+# 3. Banco de Dados Local SQLite
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.db-journal
+
+# 4. Build do TypeScript
+dist/
+build/
+
+# 5. Logs de erro e debug
+*.log
+npm-debug.log*
+
+# 6. Arquivos gerados por Sistemas Operacionai
+.DS_Store
+Thumbs.db
+
+# 7. Resquícios de configurações antigas
+src/generated/
