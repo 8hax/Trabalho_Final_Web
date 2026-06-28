@@ -18,7 +18,7 @@ model Board {
 
 // Modelo de usuario
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) // nao fiz o autoincrement por motivos de seguranca e ocultacao de dados
   username  String   @unique
   email     String   @unique
   password  String?            // Nullable, bots IA não possuem senha
