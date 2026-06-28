@@ -21,7 +21,7 @@ export class AuthService {
       data: { username, email, password: passwordHashed }
     })
 
-    return { id: user.id, email: user.email }
+    return { id: user.id, username: user.username, email: user.email }
   }
 
   async login(email: string, password: string) {
