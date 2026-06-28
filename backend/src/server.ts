@@ -2,7 +2,6 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { boardRoutes } from './routes/board.routes'
 
 const app = express()
 const PORT = process.env.PORT ?? 3001
@@ -19,7 +18,6 @@ app.use(cookieParser())
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
-app.use('/boards', boardRoutes);
 
 //Inicia o servidor
 app.listen(PORT, () => {
