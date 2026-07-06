@@ -1,0 +1,94 @@
+.home {
+  max-width: 300rem;
+  min-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.homeHeader {
+  background: rgb(255, 255, 255);
+
+  padding: 1.5rem;
+  min-width: 30rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08);
+
+  margin-bottom: 2rem;
+}
+
+.homeHeader h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.homeHeader p {
+  color: #a1a1a1;
+}
+
+.btnAdd {
+  background: #0548ae;
+  color: white;
+
+  height: 100%;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.btnAdd:hover {
+    opacity: 0.9;
+}
+
+/* Enable hover only on non-touch devices
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+    border-color: transparent;
+  }
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 48px 24px;
+  }
+
+  .intro {
+    gap: 16px;
+  }
+
+  .intro h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.92px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+
+  .page {
+    --background: #000;
+    --foreground: #000;
+
+    --text-primary: #ededed;
+    --text-secondary: #999;
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+    --button-secondary-border: #1a1a1a;
+  }
+} */

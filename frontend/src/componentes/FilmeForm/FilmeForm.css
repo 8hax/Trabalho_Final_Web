@@ -1,0 +1,47 @@
+.filme-form {
+  max-width: 300rem;
+  min-width: 40rem;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.25rem;
+}
+
+
+.filme-form h2 {
+  text-align: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.4rem;
+}
+
+.filme-form button {
+  padding: 0.85rem;
+  max-width: 20rem;
+  min-width: 10rem;
+  align-self: center;
+  border: none;
+  border-radius: 8px;
+  background: #0a8a01;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer; 
+  transition: opacity 0.2s;
+}
+
+.filme-form button:hover {
+  opacity: 0.9;
+}
