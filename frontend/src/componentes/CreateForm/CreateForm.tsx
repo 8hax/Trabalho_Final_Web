@@ -1,13 +1,13 @@
 "use client"
 
 import { createSchema } from "@/schemas/create.schema";
-import { create } from "domain";
 import { routerServerGlobal } from "next/dist/server/lib/router-utils/router-server-context";
 import Image from "next/image"
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import "@/componentes/CreateForm/CreateForm.css"
+import { create } from "@/services/auth.services";
 
 export default function CreateForm()
 {
