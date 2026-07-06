@@ -1,21 +1,46 @@
 import "@/componentes/Header/Header.css";
+import { cookies } from "next/headers";
+import Link from "next/link";
+import Logout from "../Logout/Logout";
 
 export default async function Header(){
+
+    const cookieStore = await cookies();
+
+    const token = cookieStore.get("token");
 
   
     return(
         <header className='header'>
-                <nav>
-                    <ul>
-                        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A" target='_blank'>Sobre</a></li>| 
-                        <li><a href="https://www.youtube.com/watch?v=pkACVyU4PmA&list=RDpkACVyU4PmA&start_radio=1" target='_blank'>Página Oficial</a></li>
-                    </ul>
-                </nav>
-                <div>
-                    <ul>
-                        <li><a href="https://www.youtube.com/watch?v=99TjczXQB-g&list=RD99TjczXQB-g&start_radio=1" target='_blank'>Login</a></li> 
-                    </ul>
-                </div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/">Home</Link>
+                    </li>
+                </ul>
+            </nav>
+
+            <div>
+                <ul>
+                    {
+                        !token && (
+                            <>
+                                <li>
+                                    <Link href={"/login"}>Login</Link>
+                                </li> |
+                                <li>
+                                    <Link href={"/create"}>Criar Conta</Link>
+                                </li>
+                            </>
+                        )
+                    }
+                    {
+                        token && (
+                            <li><Logout/></li>
+                        )
+                    }
+                </ul>
+            </div>
         </header>
     )
 }

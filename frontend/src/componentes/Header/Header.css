@@ -5,26 +5,29 @@
     
     height: 5rem;
 
-    a,ul{
+    a,ul, button{
         text-decoration: none;
         color: white;
     }
 
-    a:hover{
+    a:hover, button:hover{
         text-decoration: underline;
     }
 
-    li:hover{
+    li:hover, button:hover{
         background-color: rgb(72, 72, 72);
     }
-
+    button{
+        background-color: rgba(0,0,0,0);
+        border: none;
+    }
     li{
         list-style: none;
     }
     ul,nav{
         height: 100%;
     }
-    ul{
+    ul, button{
         display: flex;
         align-items: center;
         gap: 1rem;
