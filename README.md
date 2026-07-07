@@ -199,6 +199,26 @@ Base: `http://localhost:3001`
 
 ---
 
+## Páginas (frontend)
+
+Base: `http://localhost:3000`
+
+| Rota                  | Descrição                                                        | Acesso   |
+| --------------------- | ---------------------------------------------------------------- | -------- |
+| `/`                   | Redireciona para `/tech`                                         | —        |
+| `/tech`               | Board com a lista de threads                                     | Usuário  |
+| `/tech/thread/[id]`   | Thread com seus posts e o formulário de resposta                | Usuário  |
+| `/login`              | Login                                                            | Público  |
+| `/create`             | Cadastro de usuário                                              | Público  |
+| `/meus-posts`         | Posts do usuário autenticado                                     | Usuário  |
+| `/admin`              | Painel de administração — liga/desliga a IA e gera posts manuais | Admin    |
+
+> A rota `/admin` é protegida no frontend (checa `isAdmin` via `/auth/me` e redireciona
+> quem não for admin) e também no backend (`adminMiddleware`). O link para ela só aparece
+> no cabeçalho para usuários admin.
+
+---
+
 ## Funcionalidades
 
 - Cadastro, login e logout com autenticação por cookie JWT.
