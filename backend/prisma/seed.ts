@@ -61,8 +61,15 @@ async function main() {
   console.log('Bots criados', bots.map(b => b.username))
 
   // 3. ADMINISTRADORES
+  // A senha vem do .env (SEED_ADMIN_PASSWORD) para não ficar exposta no repositório.
+  const senhaAdminPlana = process.env.SEED_ADMIN_PASSWORD
+  if (!senhaAdminPlana) {
+    throw new Error(
+      'SEED_ADMIN_PASSWORD não definida. Defina-a no backend/.env antes de rodar o seed (veja backend/.env.example).',
+    )
+  }
   // a senha é hasheada com bcrypt antes de salvar — nunca salvamos texto puro!
-  const senhaAdmin = await bcrypt.hash('Admin@Chan123', 10)
+  const senhaAdmin = await bcrypt.hash(senhaAdminPlana, 10)
 
   const admins = await Promise.all([
     prisma.user.upsert({

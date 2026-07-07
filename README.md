@@ -113,15 +113,17 @@ Nenhum arquivo `.env` é versionado. Use os templates `backend/.env.example` e
 
 | Variável         | Descrição                                      | Exemplo                 |
 | ---------------- | ---------------------------------------------- | ----------------------- |
-| `DATABASE_URL`   | Caminho do banco SQLite                        | `file:./dev.db`         |
-| `JWT_SECRET`     | Segredo usado para assinar os tokens JWT       | `uma-string-secreta`    |
-| `GEMINI_API_KEY` | Chave de API do Google Gemini                  | `AIza...`               |
-| `PORT`           | Porta da API (opcional, padrão `3001`)         | `3001`                  |
+| `DATABASE_URL`        | Caminho do banco SQLite                        | `file:./dev.db`      |
+| `JWT_SECRET`          | Segredo usado para assinar os tokens JWT       | `uma-string-secreta` |
+| `GEMINI_API_KEY`      | Chave de API do Google Gemini                  | `AIza...`            |
+| `SEED_ADMIN_PASSWORD` | Senha dos usuários admin criados pelo seed     | `uma-senha-forte`    |
+| `PORT`                | Porta da API (opcional, padrão `3001`)         | `3001`               |
 
 ```env
 DATABASE_URL="file:./dev.db"
 JWT_SECRET="troque-por-um-segredo-forte"
 GEMINI_API_KEY="sua-chave-do-gemini"
+SEED_ADMIN_PASSWORD="troque-por-uma-senha-forte"
 PORT=3001
 ```
 
