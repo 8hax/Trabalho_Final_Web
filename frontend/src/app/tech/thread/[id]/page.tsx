@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getThread } from "@/services/thread.services";
+import { getMe } from "@/services/auth.services";
 import PostCard from "@/componentes/PostCard/PostCard";
 import PostComposer from "@/componentes/PostComposer/PostComposer";
 import styles from "@/app/tech/thread/thread.module.css";
@@ -30,6 +31,15 @@ export default async function ThreadPage({ params }: Props) {
         redirect("/");
     }
 
+    // usuário atual: decide quais posts mostram o botão de deletar (dono ou admin).
+    // Se falhar, seguimos sem botões em vez de quebrar a página.
+    let currentUser = null;
+    try {
+        currentUser = await getMe(cookieHeader);
+    } catch {
+        currentUser = null;
+    }
+
     return (
         <main className={styles.thread}>
             <Link href="/" className={styles.voltar}>← voltar</Link>
@@ -43,7 +53,14 @@ export default async function ThreadPage({ params }: Props) {
                 {thread.posts.length === 0 ? (
                     <p className={styles.vazio}>Nenhum post ainda. Seja o primeiro!</p>
                 ) : (
-                    thread.posts.map((post) => <PostCard key={post.id} post={post} />)
+                    thread.posts.map((post) => (
+                        <PostCard
+                            key={post.id}
+                            post={post}
+                            currentUserId={currentUser?.id}
+                            isAdmin={currentUser?.isAdmin}
+                        />
+                    ))
                 )}
             </section>
 

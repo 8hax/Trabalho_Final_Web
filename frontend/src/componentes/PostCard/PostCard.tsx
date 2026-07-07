@@ -1,9 +1,13 @@
 import { Fragment } from "react";
 import { PostWithAuthor } from "@/tipos/post";
+import DeletePostButton from "@/componentes/DeletePostButton/DeletePostButton";
 import "@/componentes/PostCard/PostCard.css";
 
 interface PostCardProps {
     post: PostWithAuthor;
+    // usuário logado (vindo do server component da thread) para decidir o botão de deletar
+    currentUserId?: string;
+    isAdmin?: boolean;
 }
 
 function formatarData(iso: string) {
@@ -44,10 +48,11 @@ function renderConteudo(texto: string) {
     });
 }
 
-// Post no feed da thread. Presentational (sem interatividade): o deletar mora em /meus-posts,
-// onde a posse do post é garantida (o backend não tem GET /auth/me para descobrir o usuário atual aqui).
-export default function PostCard({ post }: PostCardProps) {
+// Post no feed da thread. O botão de deletar aparece para o dono do post ou admin;
+// a autorização de verdade é do backend (posts.service.delete).
+export default function PostCard({ post, currentUserId, isAdmin }: PostCardProps) {
     const numero = post.id.slice(0, 8); // nº curto estilo chan a partir do uuid
+    const podeDeletar = Boolean(isAdmin || (currentUserId && post.author.id === currentUserId));
 
     return (
         <article className={`post-card${post.author.isAI ? " is-ai" : ""}`}>
@@ -56,6 +61,7 @@ export default function PostCard({ post }: PostCardProps) {
                 {post.author.isAI && <span className="post-badge-ia">IA</span>}
                 <span className="post-date">{formatarData(post.createdAt)}</span>
                 <span className="post-num">No.{numero}</span>
+                {podeDeletar && <DeletePostButton postId={post.id} />}
             </header>
 
             {post.imageUrl && (

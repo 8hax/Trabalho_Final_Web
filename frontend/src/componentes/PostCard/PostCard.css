@@ -53,6 +53,27 @@
   color: var(--link-hover);
 }
 
+/* Botão de apagar: discreto, empurrado pro fim da linha de meta */
+.post-delete {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: var(--text-faint);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0 0.15rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.post-delete:hover {
+  color: var(--red);
+}
+.post-delete:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .post-image {
   float: left; /* imagem à esquerda, texto contorna (igual 4chan) */
   max-width: 240px;
