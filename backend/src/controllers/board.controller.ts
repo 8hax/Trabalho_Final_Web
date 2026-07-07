@@ -6,7 +6,7 @@ const boardService = new BoardService()
 export class BoardController {
   async findBySlug(req: Request, res: Response) {
     try {
-      const { slug } = req.params
+      const { slug } = req.params as { slug: string }
       const board = await boardService.findBySlug(slug)
 
       if (!board) {

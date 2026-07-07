@@ -6,7 +6,7 @@ const threadService = new ThreadService()
 export class ThreadController {
   async findById(req: Request, res: Response) {
     try {
-      const { id } = req.params
+      const { id } = req.params as {id: string};
       const thread = await threadService.findById(id)
 
       if (!thread) {

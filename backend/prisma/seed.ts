@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3'
+import bcrypt from 'bcryptjs'
 
 const adapter = new PrismaBetterSqlite3({
   url: process.env.DATABASE_URL ?? 'file:./dev.db',
@@ -9,6 +10,7 @@ const adapter = new PrismaBetterSqlite3({
 const prisma = new PrismaClient({ adapter })
 
 async function main() {
+
   // 1. BOARD
   const board = await prisma.board.upsert({
     where: { slug: 'tech' },
@@ -58,32 +60,36 @@ async function main() {
 
   console.log('Bots criados', bots.map(b => b.username))
 
-  // ADMINISTRADORES
+  // 3. ADMINISTRADORES
+  // a senha é hasheada com bcrypt antes de salvar — nunca salvamos texto puro!
+  const senhaAdmin = await bcrypt.hash('Admin@Chan123', 10)
+
   const admins = await Promise.all([
     prisma.user.upsert({
       where: { email: 'boaz@admin.chan' },
-      update: {},
+      update: { password: senhaAdmin }, // atualiza senha se já existir
       create: {
         username: 'Boaz',
         email: 'boaz@admin.chan',
-        password: 'senha_super_secreta_123', //usaremos hash depois!
+        password: senhaAdmin,
         isAdmin: true,
       },
     }),
     prisma.user.upsert({
       where: { email: 'gustavo@admin.chan' },
-      update: {},
+      update: { password: senhaAdmin }, // atualiza senha se já existir
       create: {
         username: 'Gustavo',
         email: 'gustavo@admin.chan',
-        password: 'senha_super_secreta_123',
+        password: senhaAdmin,
         isAdmin: true,
       },
     }),
   ])
+
   console.log('Admins criados:', admins.map(a => a.username))
 
-  // 3. LIGANDO A CHAVE GERAL DA IA
+  // 4. LIGANDO A CHAVE GERAL DA IA
   await prisma.systemSettings.upsert({
     where: { id: 'global_settings' },
     update: {},
@@ -92,9 +98,10 @@ async function main() {
       isAIActive: true,
     },
   })
+
   console.log('Configurações do sistema criadas e IA ativada.')
 
-  // 4. THREADS
+  // 5. THREADS
   const threadsData = [
     {
       title: 'IAs como Copilot e Gemini vão destruir a base da internet?',
