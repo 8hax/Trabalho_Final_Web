@@ -1,8 +1,9 @@
 .thread {
-  max-width: 55rem;
+  max-width: 62rem;
   width: 100%;
-  margin: 0 auto;
-  padding: 1.25rem 1rem 3rem;
+  /* alinhado à esquerda como o 4chan (sem centralizar) */
+  margin: 0;
+  padding: 1.25rem 1rem 3rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -57,6 +58,7 @@
 .posts {
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* cada reply encolhe pro tamanho do conteúdo */
   gap: 0.5rem;
   margin-top: 0.3rem;
 }

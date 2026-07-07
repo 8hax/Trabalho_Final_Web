@@ -1,10 +1,13 @@
-/* Reply estilo chan: box com acento à esquerda */
+/* Reply estilo chan: box que encolhe pro conteúdo, alinhado à esquerda */
 .post-card {
+  display: flow-root; /* contém a imagem flutuante dentro do box */
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-left: 3px solid var(--border-strong);
   border-radius: var(--radius);
   padding: 0.7rem 0.9rem;
+  /* não estica: vai só até onde o conteúdo precisa, com um teto p/ posts longos */
+  max-width: min(100%, 46rem);
 }
 
 .post-card-head {
@@ -51,12 +54,12 @@
 }
 
 .post-image {
+  float: left; /* imagem à esquerda, texto contorna (igual 4chan) */
   max-width: 240px;
   max-height: 240px;
   border: 1px solid var(--border);
   border-radius: 3px;
-  margin: 0 0 0.5rem;
-  display: block;
+  margin: 0.15rem 0.9rem 0.4rem 0;
   object-fit: contain;
 }
 
