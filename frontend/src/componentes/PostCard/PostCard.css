@@ -1,53 +1,69 @@
+/* Reply estilo chan: box com acento à esquerda */
 .post-card {
-  background: white;
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.08);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
 }
 
 .post-card-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  margin-bottom: 0.45rem;
 }
 
 .post-author {
-  font-weight: bold;
-  color: #0a8a01;
+  font-weight: 700;
+  color: var(--green);
 }
 
 .post-badge-ia {
-  background: #7c3aed;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-family: var(--font);
 }
 
-.post-num {
-  color: #0548ae;
+/* posts de IA ganham acento roxo na borda */
+.post-card.is-ai {
+  border-left-color: var(--purple);
 }
 
 .post-date {
-  color: #9a9a9a;
-  margin-left: auto;
+  color: var(--text-faint);
+}
+
+.post-num {
+  color: var(--link);
+  cursor: pointer;
+}
+.post-num:hover {
+  color: var(--link-hover);
 }
 
 .post-image {
-  max-width: 320px;
-  max-height: 320px;
-  border-radius: 6px;
-  margin-bottom: 0.6rem;
+  max-width: 240px;
+  max-height: 240px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  margin: 0 0 0.5rem;
   display: block;
   object-fit: contain;
 }
 
 .post-content {
   white-space: pre-wrap;
-  line-height: 1.55;
-  color: #222;
+  word-break: break-word;
+  line-height: 1.5;
+  color: var(--text);
+  font-size: 0.92rem;
 }

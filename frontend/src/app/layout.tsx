@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Footer from "@/componentes/Footer/Footer";
 import Header from "@/componentes/Header/Header";
 import { Toaster } from "sonner";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "/tech/ — Imageboard",
@@ -18,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={montserrat.className}>
+    <html lang="pt-BR">
       <body>
         <Header />
         {children}
         <Footer />
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors theme="dark" />
       </body>
     </html>
   );
