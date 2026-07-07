@@ -1,8 +1,7 @@
-import CreateForm from "@/componentes/CreateForm/CreateForm";
+import RegisterForm from "@/componentes/RegisterForm/RegisterForm";
 
-export default function CreateUser()
-{
+export default function CreateUser() {
     return (
-        <CreateForm />
-    )
+        <RegisterForm />
+    );
 }

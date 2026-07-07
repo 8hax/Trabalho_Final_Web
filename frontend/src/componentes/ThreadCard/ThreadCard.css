@@ -1,0 +1,26 @@
+.thread-card {
+  display: block;
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thread-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.12);
+}
+
+.thread-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: #0548ae;
+}
+
+.thread-card p {
+  color: #5e5b5b;
+  line-height: 1.5;
+}

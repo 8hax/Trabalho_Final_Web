@@ -1,6 +1,7 @@
-import {z} from "zod";
+import { z } from "zod";
 
+// Espelha o loginSchema do backend (auth.controller): valida email e exige senha não-vazia.
 export const loginSchema = z.object({
     email: z.email("Email inválido"),
-    senha: z.string().min(8, "Senha deve ter pelo menos 8 caracteres")
-})
+    password: z.string().min(1, "Senha obrigatória"),
+});

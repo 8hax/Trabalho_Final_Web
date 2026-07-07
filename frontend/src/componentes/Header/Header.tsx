@@ -3,44 +3,43 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import Logout from "../Logout/Logout";
 
-export default async function Header(){
-
+// Server component: lê o cookie httpOnly "token" para decidir o que mostrar (logado vs. deslogado).
+export default async function Header() {
     const cookieStore = await cookies();
-
     const token = cookieStore.get("token");
 
-  
-    return(
-        <header className='header'>
+    return (
+        <header className="header">
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/">/tech/</Link>
                     </li>
+                    {token && (
+                        <li>
+                            <Link href="/meus-posts">Meus posts</Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
 
             <div>
                 <ul>
-                    {
-                        !token && (
-                            <>
-                                <li>
-                                    <Link href={"/login"}>Login</Link>
-                                </li> |
-                                <li>
-                                    <Link href={"/create"}>Criar Conta</Link>
-                                </li>
-                            </>
-                        )
-                    }
-                    {
-                        token && (
-                            <li><Logout/></li>
-                        )
-                    }
+                    {!token && (
+                        <>
+                            <li>
+                                <Link href="/login">Login</Link>
+                            </li>
+                            <li>
+                                <Link href="/create">Criar Conta</Link>
+                            </li>
+                        </>
+                    )}
+                    {token && (
+                        <li><Logout /></li>
+                    )}
                 </ul>
             </div>
         </header>
-    )
+    );
 }

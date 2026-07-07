@@ -1,0 +1,55 @@
+.meus-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meus-post-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.08);
+}
+
+.meus-post-content {
+  white-space: pre-wrap;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.meus-post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meus-post-thread {
+  color: #0548ae;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.meus-post-thread:hover {
+  text-decoration: underline;
+}
+
+.meus-post-footer button {
+  border: none;
+  cursor: pointer;
+  background: #dc2626;
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.2s;
+}
+
+.meus-post-footer button:hover {
+  opacity: 0.8;
+}
+
+.meus-posts-empty {
+  color: #5e5b5b;
+  text-align: center;
+  padding: 2rem;
+}

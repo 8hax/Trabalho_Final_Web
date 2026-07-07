@@ -1,0 +1,48 @@
+.thread {
+  max-width: 60rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.voltar {
+  color: #0548ae;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.threadHeader {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.threadHeader h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.threadHeader p {
+  color: #5e5b5b;
+  line-height: 1.5;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.vazio {
+  color: #5e5b5b;
+  text-align: center;
+  padding: 1.5rem;
+}

@@ -1,8 +1,18 @@
-export interface LoginDTO{
-    email: string,
-    senha: string
+// Corpo enviado no login: o backend (auth.controller loginSchema) espera "password", não "senha".
+export interface LoginDTO {
+    email: string;
+    password: string;
 }
 
-export interface LoginResponse{
-    token: string;
+// Registro exige username + email + password (auth.controller createSchema).
+export interface RegisterDTO {
+    username: string;
+    email: string;
+    password: string;
+}
+
+// O login NÃO devolve o token no corpo: ele grava um cookie httpOnly "token"
+// e responde apenas { success: true }.
+export interface LoginResponse {
+    success: boolean;
 }
