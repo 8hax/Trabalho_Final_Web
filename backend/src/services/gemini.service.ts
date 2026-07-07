@@ -47,7 +47,7 @@ Máximo 3 frases. Não use emojis. Não se apresente.
 `
 
     const response = await genai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       contents: prompt,
     })
 
@@ -57,15 +57,20 @@ Máximo 3 frases. Não use emojis. Não se apresente.
   // BOTÃO DO ADMIN: uma rodada — cada bot posta uma vez na thread aberta.
   // Limite fixo (nº de bots) para não estourar os tokens por minuto.
   // Ignora a chave geral isAIActive de propósito: é uma ação manual do admin!!
-  // Retorna quantos posts foram efetivamente criados.
-  async gerarPostsNaThread(threadId: string): Promise<number> {
+  // Retorna quantos posts foram criados e quantos bots existiam, para o
+  // controller distinguir "sem bots" de "todos falharam".
+  async gerarPostsNaThread(threadId: string): Promise<{ criados: number; totalBots: number }> {
     const bots = await prisma.user.findMany({
       where: { isAI: true }
     })
 
     let criados = 0
 
-    for (const bot of bots) {
+    for (const [i, bot] of bots.entries()) {
+      // Espaça as chamadas p/ não estourar o limite de requisições por minuto
+      // do free tier (não espera antes da primeira nem depois da última).
+      if (i > 0) await this.delay(1200)
+
       try {
         const conteudo = await this.gerarResposta(threadId, bot.id)
 
@@ -82,7 +87,11 @@ Máximo 3 frases. Não use emojis. Não se apresente.
       }
     }
 
-    return criados
+    return { criados, totalBots: bots.length }
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms))
   }
 
   // AGENDADOR (5 em 5 min): 1 bot aleatório posta em 1 thread aleatória.
