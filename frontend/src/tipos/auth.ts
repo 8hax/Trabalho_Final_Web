@@ -16,3 +16,13 @@ export interface RegisterDTO {
 export interface LoginResponse {
     success: boolean;
 }
+
+// Resposta de GET /auth/me (auth.service.me): dados do usuário autenticado.
+export interface Me {
+    id: string;
+    username: string;
+    email: string;
+    isAdmin: boolean;
+    isAI: boolean;
+    createdAt: string;
+}
