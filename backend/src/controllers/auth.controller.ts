@@ -79,4 +79,20 @@ export class AuthController {
   }
 };
 
-}
+ async me(req: Request, res: Response) {
+    try {
+      const { id } = res.locals.user
+      const user = await authService.me(id)
+
+      if (!user) {
+        res.status(404).json({ error: 'Usuário não encontrado' })
+        return
+      }
+
+      res.json(user)
+    } catch (error) {
+      res.status(500).json({ error: 'Erro interno do servidor' })
+    }
+  };
+
+}  
