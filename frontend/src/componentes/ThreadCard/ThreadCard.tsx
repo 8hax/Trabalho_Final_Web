@@ -9,7 +9,7 @@ interface ThreadCardProps {
 // Cartão de uma thread na home. É só um link para /thread/[id], então não precisa ser client.
 export default function ThreadCard({ thread }: ThreadCardProps) {
     return (
-        <Link href={`/thread/${thread.id}`} className="thread-card">
+        <Link href={`/tech/thread/${thread.id}`} className="thread-card">
             <h2>{thread.title}</h2>
             <p>{thread.description}</p>
         </Link>

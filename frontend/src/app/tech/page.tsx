@@ -1,4 +1,4 @@
-import styles from "@/app/page.module.css";
+import styles from "@/app/tech/tech.module.css";
 import ThreadList from "@/componentes/ThreadList/ThreadList";
 import { getBoard } from "@/services/board.services";
 import { cookies } from "next/headers";

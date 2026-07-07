@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { getThread } from "@/services/thread.services";
 import PostCard from "@/componentes/PostCard/PostCard";
 import PostComposer from "@/componentes/PostComposer/PostComposer";
-import styles from "@/app/thread/thread.module.css";
+import styles from "@/app/tech/thread/thread.module.css";
 
 interface Props {
     params: Promise<{ id: string }>;
