@@ -74,7 +74,8 @@ Clone o repositório e siga os dois blocos abaixo (dois terminais).
 cd backend
 npm install
 
-# crie o arquivo .env (veja a seção "Variáveis de ambiente")
+# copie o template e preencha os valores (veja "Variáveis de ambiente")
+cp .env.example .env
 
 # cria o banco SQLite e aplica as migrations
 npm run migrate
@@ -92,7 +93,8 @@ npm run dev
 cd frontend
 npm install
 
-# crie o arquivo .env.local (veja a seção "Variáveis de ambiente")
+# copie o template e ajuste se necessário (veja "Variáveis de ambiente")
+cp .env.example .env.local
 
 # inicia a aplicação em http://localhost:3000
 npm run dev
@@ -104,7 +106,8 @@ Abra <http://localhost:3000> no navegador.
 
 ## Variáveis de ambiente
 
-Nenhum arquivo `.env` é versionado. Crie-os localmente conforme abaixo.
+Nenhum arquivo `.env` é versionado. Use os templates `backend/.env.example` e
+`frontend/.env.example` como base (`cp .env.example .env`) e preencha conforme abaixo.
 
 ### `backend/.env`
 
