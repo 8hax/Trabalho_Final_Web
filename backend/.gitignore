@@ -25,3 +25,6 @@ Thumbs.db
 
 # 7. Resquícios de configurações antigas
 src/generated/
+
+# 8. Arquivos de teste (curl, etc)
+cookies.txt
