@@ -27,6 +27,7 @@ export async function login(dados: LoginDTO) : Promise <LoginResponse>
         headers: {
             "Content-Type" : "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(dados),
     })
 
