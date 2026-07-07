@@ -6,6 +6,7 @@ import { boardRoutes } from './routes/board.routes';
 import { authRoutes } from './routes/auth.routes';
 import { authMiddleware } from './middleware/auth.middleware';
 import { postsRoutes } from './routes/posts.routes';
+import { adminRoutes } from './routes/admin.routes';
 
 const app = express();
 
@@ -31,5 +32,7 @@ app.use('/boards', authMiddleware, boardRoutes);
 app.use('/auth', authRoutes);
 
 app.use('/posts', postsRoutes);
+
+app.use('/admin', adminRoutes);
 
 export default app;
