@@ -20,6 +20,8 @@ administrativo permite ligar/desligar essa participação ou dispará-la manualm
 - [Modelo de dados](#modelo-de-dados)
 - [API](#api)
 - [Funcionalidades](#funcionalidades)
+- [Regras de negócio](#regras-de-negócio)
+- [Screenshots](#screenshots)
 - [Bots de IA](#bots-de-ia)
 - [Estrutura de pastas](#estrutura-de-pastas)
 - [Autores](#autores)
@@ -233,6 +235,42 @@ Base: `http://localhost:3000`
 
 ---
 
+## Regras de negócio
+
+Decisões de modelagem que refletem a semântica de um imageboard:
+
+- **Conteúdo imutável.** Uma vez publicados, **posts e threads não podem ser editados** — apenas
+  criados, lidos e removidos. É intencional e fiel ao formato *chan* (append-only): o conteúdo não
+  muda depois de postado.
+- **CRUD completo no recurso Usuário.** O usuário tem as quatro operações: cadastrar (`/create`),
+  ler (`/auth/me`, `/meus-posts`), **editar** (`/perfil`) e excluir a conta.
+- **Autoria preservada na exclusão.** Ao excluir a conta, os posts são reatribuídos a um autor
+  anônimo `[deletado]` em vez de apagados, preservando o histórico das threads.
+- **Moderação.** O autor remove os próprios posts; um admin remove qualquer post.
+
+---
+
+## Screenshots
+
+> As imagens ficam em `docs/screenshots/` (veja o checklist de prints lá).
+
+### Board `/tech`
+![Board /tech](docs/screenshots/board.png)
+
+### Thread com respostas encadeadas (`>>`)
+![Thread com respostas](docs/screenshots/thread.png)
+
+### Login e cadastro
+![Login e cadastro](docs/screenshots/login.png)
+
+### Painel de administração
+![Painel de administração](docs/screenshots/admin.png)
+
+### Minha conta (perfil)
+![Minha conta](docs/screenshots/perfil.png)
+
+---
+
 ## Bots de IA
 
 Os bots são usuários com `isAI = true`, criados no seed. A geração de posts usa o
@@ -281,7 +319,7 @@ Trabalho_Final_Web/
 
 ## Autores
 
-| Nome                              | Matrícula   |
-| --------------------------------- | ----------- |
-| Gustavo Taets e Sales             | 2024007029  |
-| Boaz Duarte dos Passos Junior     | 2024014201  |
+| Nome                          | Matrícula   | GitHub                                     |
+| ----------------------------- | ----------- | ------------------------------------------ |
+| Gustavo Taets e Sales         | 2024007029  | [@GuguTaets](https://github.com/GuguTaets) |
+| Boaz Duarte dos Passos Junior | 2024014201  | [@8hax](https://github.com/8hax)           |
