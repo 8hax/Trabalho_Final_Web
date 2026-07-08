@@ -3,8 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getThread } from "@/services/thread.services";
 import { getMe } from "@/services/auth.services";
-import PostCard from "@/componentes/PostCard/PostCard";
-import PostComposer from "@/componentes/PostComposer/PostComposer";
+import ThreadView from "@/componentes/ThreadView/ThreadView";
 import styles from "@/app/tech/thread/thread.module.css";
 
 interface Props {
@@ -49,22 +48,12 @@ export default async function ThreadPage({ params }: Props) {
                 <p>{thread.description}</p>
             </header>
 
-            <section className={styles.posts}>
-                {thread.posts.length === 0 ? (
-                    <p className={styles.vazio}>Nenhum post ainda. Seja o primeiro!</p>
-                ) : (
-                    thread.posts.map((post) => (
-                        <PostCard
-                            key={post.id}
-                            post={post}
-                            currentUserId={currentUser?.id}
-                            isAdmin={currentUser?.isAdmin}
-                        />
-                    ))
-                )}
-            </section>
-
-            <PostComposer threadId={thread.id} />
+            <ThreadView
+                threadId={thread.id}
+                posts={thread.posts}
+                currentUserId={currentUser?.id}
+                isAdmin={currentUser?.isAdmin}
+            />
         </main>
     );
 }

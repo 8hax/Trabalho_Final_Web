@@ -2,13 +2,23 @@ import prisma from "../lib/prisma";
 
 
 export class PostsServices{
-    async create(content: string, threadId: string, authorId: string, imageUrl?: string){
+    async create(content: string, threadId: string, authorId: string, imageUrl?: string, replyToId?: string){
+        // Se for resposta a um post específico (>>), valida que o alvo existe
+        // e pertence à MESMA thread — evita vínculo órfão ou cruzando threads.
+        if (replyToId) {
+            const alvo = await prisma.post.findUnique({ where: { id: replyToId } })
+            if (!alvo || alvo.threadId !== threadId) {
+                throw new Error('Post de resposta inválido')
+            }
+        }
+
         return prisma.post.create({
             data:{
                 content,
                 threadId,
                 authorId,
                 imageUrl,
+                replyToId: replyToId ?? null,
             },
             include:{
                 author:{

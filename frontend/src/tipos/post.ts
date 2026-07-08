@@ -13,7 +13,7 @@ export interface Post {
     imageUrl: string | null; // imagem opcional, estilo chan
     threadId: string;
     authorId: string;
-    replyToId: string | null;
+    replyToId: string | null; // >> resposta a outro post
     createdAt: string;
 }
 
@@ -32,9 +32,16 @@ export interface PostWithThread extends Post {
     thread: Pick<Thread, "id" | "title" | "slug">;
 }
 
-// Corpo do POST /posts (posts.controller lê content, threadId, imageUrl).
+// Corpo do POST /posts (posts.controller lê content, threadId, imageUrl, replyToId).
 export interface CreatePostDTO {
     content: string;
     threadId: string;
     imageUrl?: string;
+    replyToId?: string; // preenchido ao responder a um post específico
+}
+
+// Alvo de "responder a": id curto (>>xxxx, para exibir) + id completo (para o backend).
+export interface ReplyTarget {
+    shortId: string;
+    fullId: string;
 }

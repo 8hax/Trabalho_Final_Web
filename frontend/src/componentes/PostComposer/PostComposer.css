@@ -18,6 +18,34 @@
   font-weight: 700;
 }
 
+/* Chip "Respondendo a >>xxxx  ✕" quando se responde a um post específico */
+.post-composer-reply {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+/* override do estilo verde de .post-composer button (especificidade maior) */
+.post-composer .post-composer-reply-clear {
+  align-self: auto;
+  padding: 0 0.2rem;
+  background: none;
+  color: var(--text-faint);
+  border: none;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+.post-composer .post-composer-reply-clear:hover {
+  color: var(--red);
+  filter: none;
+}
+
 .post-composer textarea,
 .post-composer input {
   width: 100%;

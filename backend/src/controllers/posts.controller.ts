@@ -7,10 +7,10 @@ export class PostsController {
 
   async create(req: Request, res: Response) {
     try {
-      const { content, threadId, imageUrl } = req.body
+      const { content, threadId, imageUrl, replyToId } = req.body
       const { id: authorId } = res.locals.user
 
-      const post = await postsServices.create(content, threadId, authorId, imageUrl)
+      const post = await postsServices.create(content, threadId, authorId, imageUrl, replyToId)
 
       res.status(201).json(post)
     } catch (error) {
