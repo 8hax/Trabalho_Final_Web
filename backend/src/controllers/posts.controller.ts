@@ -35,33 +35,6 @@ export class PostsController {
     }
   }
 
-  async findById(req: Request, res: Response) {
-    try {
-      const { id } = req.params as {id: string}
-      const post = await postsServices.findById(id)
-
-      if (!post) {
-        res.status(404).json({ error: 'Post não encontrado' })
-        return
-      }
-
-      res.json(post)
-    } catch (error) {
-      res.status(500).json({ error: 'Erro interno do servidor' })
-    }
-  }
-
-  async findAllByThread(req: Request, res: Response) {
-    try {
-      const { threadId } = req.params as {threadId: string}
-      const posts = await postsServices.findAllByThread(threadId)
-
-      res.json(posts)
-    } catch (error) {
-      res.status(500).json({ error: 'Erro interno do servidor' })
-    }
-  }
-
   async findPostsByUser(req: Request, res: Response) {
     try {
       const { id: userId } = res.locals.user

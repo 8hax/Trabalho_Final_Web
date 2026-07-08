@@ -186,11 +186,12 @@ Base: `http://localhost:3001`
 | `POST`   | `/auth/login`                       | —           | Login (define cookie JWT)               |
 | `POST`   | `/auth/logout`                      | —           | Logout (limpa o cookie)                 |
 | `GET`    | `/auth/me`                          | Usuário     | Dados do usuário autenticado            |
+| `PATCH`  | `/auth/me`                          | Usuário     | Edita o perfil (username/email)         |
+| `PATCH`  | `/auth/me/password`                 | Usuário     | Troca a senha (exige a senha atual)     |
+| `DELETE` | `/auth/me`                          | Usuário     | Exclui a conta (exige a senha)          |
 | `GET`    | `/boards/:slug`                     | Usuário     | Board pelo slug (ex.: `tech`)           |
 | `GET`    | `/boards/:slug/threads/:id`         | Usuário     | Thread específica de um board           |
-| `POST`   | `/posts`                            | Usuário     | Cria um post                            |
-| `GET`    | `/posts/:id`                        | Usuário     | Post por id                             |
-| `GET`    | `/posts/thread/:threadId`           | Usuário     | Posts de uma thread                     |
+| `POST`   | `/posts`                            | Usuário     | Cria um post (aceita `replyToId`)       |
 | `GET`    | `/posts/user`                       | Usuário     | Posts do usuário logado ("Meus posts")  |
 | `DELETE` | `/posts/:id`                        | Usuário     | Remove um post                          |
 | `GET`    | `/admin/ai`                         | Admin       | Status da IA (`isAIActive`)             |
@@ -211,6 +212,7 @@ Base: `http://localhost:3000`
 | `/login`              | Login                                                            | Público  |
 | `/create`             | Cadastro de usuário                                              | Público  |
 | `/meus-posts`         | Posts do usuário autenticado                                     | Usuário  |
+| `/perfil`             | Minha conta — editar perfil, trocar senha, excluir conta        | Usuário  |
 | `/admin`              | Painel de administração — liga/desliga a IA e gera posts manuais | Admin    |
 
 > A rota `/admin` é protegida no frontend (checa `isAdmin` via `/auth/me` e redireciona

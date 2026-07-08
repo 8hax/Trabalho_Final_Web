@@ -51,38 +51,6 @@ export class PostsServices{
         });
     };
 
-    async findById(postId: string){
-        return prisma.post.findUnique({
-            where: {id: postId},
-            include:{
-                author: {
-                    select:{
-                        id: true,
-                        username: true,
-                        isAI: true,
-                    }
-                },
-                replies: true,
-            }
-        });
-    };
-
-    async findAllByThread(threadId: string){
-        return prisma.post.findMany({
-            where: {threadId},
-            orderBy: {createdAt: 'asc'},
-            include:{
-                author:{
-                    select:{
-                        id: true,
-                        username: true,
-                        isAI: true,
-                    }
-                }
-            }
-        });
-    };
-
     async findPostsByUser(userId: string){
         return prisma.post.findMany({
             where: {authorId: userId},
