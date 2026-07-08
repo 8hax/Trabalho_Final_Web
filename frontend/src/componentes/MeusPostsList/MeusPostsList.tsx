@@ -36,7 +36,7 @@ export default function MeusPostsList({ posts }: MeusPostsListProps) {
                 <article key={post.id} className="meus-post-card">
                     <p className="meus-post-content">{post.content}</p>
                     <div className="meus-post-footer">
-                        <Link href={`/thread/${post.thread.id}`} className="meus-post-thread">
+                        <Link href={`/tech/thread/${post.thread.id}`} className="meus-post-thread">
                             em: {post.thread.title}
                         </Link>
                         <button onClick={() => handleDelete(post.id)}>Deletar</button>

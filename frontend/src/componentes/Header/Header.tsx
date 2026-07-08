@@ -54,7 +54,12 @@ export default async function Header() {
                         </>
                     )}
                     {token && (
-                        <li><Logout /></li>
+                        <>
+                            <li>
+                                <Link href="/perfil">Perfil</Link>
+                            </li>
+                            <li><Logout /></li>
+                        </>
                     )}
                 </ul>
             </div>

@@ -26,3 +26,20 @@ export interface Me {
     isAI: boolean;
     createdAt: string;
 }
+
+// PATCH /auth/me — editar perfil (username e/ou email).
+export interface UpdateProfileDTO {
+    username: string;
+    email: string;
+}
+
+// PATCH /auth/me/password — trocar a senha (exige a senha atual).
+export interface ChangePasswordDTO {
+    currentPassword: string;
+    newPassword: string;
+}
+
+// DELETE /auth/me — excluir a conta (exige a senha como confirmação).
+export interface DeleteAccountDTO {
+    password: string;
+}

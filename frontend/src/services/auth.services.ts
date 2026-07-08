@@ -1,4 +1,12 @@
-import { LoginDTO, LoginResponse, Me, RegisterDTO } from "@/tipos/auth";
+import {
+    ChangePasswordDTO,
+    DeleteAccountDTO,
+    LoginDTO,
+    LoginResponse,
+    Me,
+    RegisterDTO,
+    UpdateProfileDTO,
+} from "@/tipos/auth";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -59,4 +67,51 @@ export async function getMe(cookie?: string): Promise<Me> {
     }
 
     return response.json();
+}
+
+// PATCH /auth/me: edita username e/ou email do usuário logado. Retorna o usuário atualizado.
+export async function updateProfile(dados: UpdateProfileDTO): Promise<Me> {
+    const response = await fetch(`${API_URL}/auth/me`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(dados),
+    });
+
+    if (!response.ok) {
+        const erro = await response.json().catch(() => null);
+        throw new Error(erro?.error ?? "Erro ao atualizar o perfil");
+    }
+
+    return response.json();
+}
+
+// PATCH /auth/me/password: troca a senha (o backend exige a senha atual).
+export async function changePassword(dados: ChangePasswordDTO): Promise<void> {
+    const response = await fetch(`${API_URL}/auth/me/password`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(dados),
+    });
+
+    if (!response.ok) {
+        const erro = await response.json().catch(() => null);
+        throw new Error(erro?.error ?? "Erro ao trocar a senha");
+    }
+}
+
+// DELETE /auth/me: exclui a conta (exige a senha). O backend limpa o cookie na resposta.
+export async function deleteAccount(dados: DeleteAccountDTO): Promise<void> {
+    const response = await fetch(`${API_URL}/auth/me`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(dados),
+    });
+
+    if (!response.ok) {
+        const erro = await response.json().catch(() => null);
+        throw new Error(erro?.error ?? "Erro ao excluir a conta");
+    }
 }
