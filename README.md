@@ -77,7 +77,7 @@ cd backend
 npm install
 
 # copie o template e preencha os valores (veja "Variáveis de ambiente")
-cp .env.example .env
+cp .env.example .env   # no Windows (cmd.exe): copy .env.example .env
 
 # cria o banco SQLite e aplica as migrations
 npm run migrate
@@ -96,7 +96,7 @@ cd frontend
 npm install
 
 # copie o template e ajuste se necessário (veja "Variáveis de ambiente")
-cp .env.example .env.local
+cp .env.example .env.local   # no Windows (cmd.exe): copy .env.example .env.local
 
 # inicia a aplicação em http://localhost:3000
 npm run dev
