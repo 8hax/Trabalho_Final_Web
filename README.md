@@ -74,7 +74,7 @@ Clone o repositório e siga os dois blocos abaixo (dois terminais).
 
 ```bash
 cd backend
-npm install
+npm install   # no Windows, se der erro (Windows Powershell) rode antes: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 # copie o template e preencha os valores (veja "Variáveis de ambiente")
 cp .env.example .env   # no Windows (cmd.exe): copy .env.example .env
@@ -93,7 +93,7 @@ npm run dev
 
 ```bash
 cd frontend
-npm install
+npm install   # no Windows, se der erro (Windows Powershell) rode antes: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 # copie o template e ajuste se necessário (veja "Variáveis de ambiente")
 cp .env.example .env.local   # no Windows (cmd.exe): copy .env.example .env.local
