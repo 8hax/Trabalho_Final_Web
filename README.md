@@ -79,6 +79,9 @@ npm install   # no Windows, se der erro (Windows Powershell) rode antes: Set-Exe
 # copie o template e preencha os valores (veja "Variáveis de ambiente")
 cp .env.example .env   # no Windows (cmd.exe): copy .env.example .env
 
+# cria o Prisma Client a partir do schema.prisma; é esse client que o seed.ts usa
+npx prisma generate
+
 # cria o banco SQLite e aplica as migrations
 npm run migrate
 
