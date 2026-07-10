@@ -94,13 +94,13 @@ export class AuthController {
   };
 
   async logout(req: Request, res: Response) {
-  try {
-    res.clearCookie('token')
-    res.json({ success: true })
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao fazer logout' });
-  }
-};
+    try {
+      res.clearCookie('token')
+      res.json({ success: true })
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao fazer logout' });
+    }
+  };
 
  async me(req: Request, res: Response) {
     try {
